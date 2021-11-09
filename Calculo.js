@@ -57,5 +57,75 @@ function pared(){
     let mortero = (longitudbloc + alturabloc)*(ancho)*(liga);
     let totalmortero = Math.round(total) * mortero;
     alert("El numero de blocs a utilizar es: " + Math.round(total));
-    alert("El total de mortero a utilizar es: " + totalmortero.toFixed(4));
+    alert("El total de mortero a utilizar es: " + totalmortero.toFixed(4) + " m3");
+}
+
+function concretosResistentes(){
+    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
+    let opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:2 \n 2. 1:2:3"));
+    switch(opc){
+        case 1:
+            tipo1(metros);
+            break;
+        case 2:
+            tipo2(metros);
+            break;
+        default:
+            alert("Opcion no valida");
+            concretosResistentes();
+    }
+}
+
+function tipo1(metros){
+    let cemento = metros * 8.4;
+    let cementodesper = 8.4 * 0.5;
+    let cementototal = cemento + cementodesper;
+
+    let arena = metros * 0.67;
+    let arenadesper = 0.67 * 0.5;
+    let arenatotal = arena + arenadesper;
+
+    let grava = metros * 0.67;
+    let gravadesper = 0.67 * 0.5;
+    let gravatotal = grava + gravadesper;
+
+    let agua = metros * 220;
+    let aguadesper = 220 * 0.5;
+    let aguatotal = agua + aguadesper;
+
+    let materiales = {
+        cemento: "Se utilizaran " + cementototal + " Bultos de cemento,",
+        arena: Math.round(arenatotal) + " m3 de arena,",
+        grava: Math.round(gravatotal) + " m3 de grava,",
+        agua: aguatotal + " litros de agua"
+    }
+
+    alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+}
+
+function tipo2(metros){
+    let cemento = metros * 7;
+    let cementodesper = 7 * 0.5;
+    let cementototal = cemento + cementodesper;
+
+    let arena = metros * 0.56;
+    let arenadesper = 0.56 * 0.5;
+    let arenatotal = arena + arenadesper;
+
+    let grava = metros * 0.84;
+    let gravadesper = 0.84 * 0.5;
+    let gravatotal = grava + gravadesper;
+
+    let agua = metros * 180;
+    let aguadesper = 180 * 0.5;
+    let aguatotal = agua + aguadesper;
+
+    let materiales = {
+        cemento: "Se utilizaran " + cementototal + " Bultos de cemento,",
+        arena: Math.round(arenatotal) + " m3 de arena,",
+        grava: Math.round(gravatotal) + " m3 de grava,",
+        agua: aguatotal + " litros de agua"
+    }
+
+    alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 }
