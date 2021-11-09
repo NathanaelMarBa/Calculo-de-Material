@@ -30,6 +30,7 @@ function principal(){
 function pared(){
     let longitud = parseFloat(prompt("Ingrese la longitud de la pared"));
     let altura = parseFloat(prompt("Ingrese el largo de la pared"));
+    let metrosc = 0;
     let liga = 0.01;
     let ancho = parseFloat(prompt("Ingrese el ancho del bloc a utilizar \n 1.10cm \n 2.15cm \n 3. 20cm \n 4. 25cm"));
     let bloc1 = 10;
@@ -60,6 +61,15 @@ function pared(){
     let totalmortero = Math.round(total) * mortero;
     alert("El numero de blocs a utilizar es: " + Math.round(total));
     alert("El total de mortero a utilizar es: " + totalmortero.toFixed(4) + " m3");
+    metrosc = longitud * altura;
+
+    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la pared? S/N")
+    if(des == "S"){
+        conclusionpared(metrosc);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function concretosResistentes(){
@@ -314,6 +324,17 @@ function conclusionobra(metros){
     let dias = 0;
     for (trabajador; trabajador<metros;){
         trabajador = (trabajador + 5) * personal;
+        dias += 1;
+    }
+        alert("La obra se demorara " + dias + " dias en completarse.");
+}
+
+function conclusionpared(metrosc){
+    let personal = prompt(("Ingrese el numero de trabajadores"));
+    let trabajador = 0;
+    let dias = 0;
+    for (trabajador; trabajador<metrosc;){
+        trabajador = (trabajador + 8) * personal;
         dias += 1;
     }
         alert("La obra se demorara " + dias + " dias en completarse.");
