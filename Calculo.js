@@ -76,6 +76,27 @@ function concretosResistentes(){
     }
 }
 
+function concretosSimples(){
+    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
+    let opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:4 \n 2. 1:3:4"));
+    switch(opc){
+        case 1:
+            tipo3(metros);
+            break;
+        case 2:
+            tipo4(metros);
+            break;
+        default:
+            alert("Opcion no valida");
+            concretosSimples();
+    }
+}
+
+function concretoRelleno(){
+    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
+    tipo5(metros);
+}
+
 function tipo1(metros){
     let cemento = metros * 8.4;
     let cementodesper = 8.4 * 0.5;
@@ -118,6 +139,87 @@ function tipo2(metros){
 
     let agua = metros * 180;
     let aguadesper = 180 * 0.5;
+    let aguatotal = agua + aguadesper;
+
+    let materiales = {
+        cemento: "Se utilizaran " + cementototal + " Bultos de cemento,",
+        arena: Math.round(arenatotal) + " m3 de arena,",
+        grava: Math.round(gravatotal) + " m3 de grava,",
+        agua: aguatotal + " litros de agua"
+    }
+
+    alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+}
+
+function tipo3(metros){
+    let cemento = metros * 6;
+    let cementodesper = 6 * 0.5;
+    let cementototal = cemento + cementodesper;
+
+    let arena = metros * 0.48;
+    let arenadesper = 0.48 * 0.5;
+    let arenatotal = arena + arenadesper;
+
+    let grava = metros * 0.96;
+    let gravadesper = 0.96 * 0.5;
+    let gravatotal = grava + gravadesper;
+
+    let agua = metros * 170;
+    let aguadesper = 170 * 0.5;
+    let aguatotal = agua + aguadesper;
+
+    let materiales = {
+        cemento: "Se utilizaran " + cementototal + " Bultos de cemento,",
+        arena: Math.round(arenatotal) + " m3 de arena,",
+        grava: Math.round(gravatotal) + " m3 de grava,",
+        agua: aguatotal + " litros de agua"
+    }
+
+    alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+}
+
+function tipo4(metros){
+    let cemento = metros * 5.2;
+    let cementodesper = 5.2 * 0.5;
+    let cementototal = cemento + cementodesper;
+
+    let arena = metros * 0.63;
+    let arenadesper = 0.63 * 0.5;
+    let arenatotal = arena + arenadesper;
+
+    let grava = metros * 0.84;
+    let gravadesper = 0.84 * 0.5;
+    let gravatotal = grava + gravadesper;
+
+    let agua = metros * 170;
+    let aguadesper = 170 * 0.5;
+    let aguatotal = agua + aguadesper;
+
+    let materiales = {
+        cemento: "Se utilizaran " + cementototal + " Bultos de cemento,",
+        arena: Math.round(arenatotal) + " m3 de arena,",
+        grava: Math.round(gravatotal) + " m3 de grava,",
+        agua: aguatotal + " litros de agua"
+    }
+
+    alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+}
+
+function tipo5(metros){
+    let cemento = metros * 4.2;
+    let cementodesper = 4.2 * 0.5;
+    let cementototal = cemento + cementodesper;
+
+    let arena = metros * 0.5;
+    let arenadesper = 0.5 * 0.5;
+    let arenatotal = arena + arenadesper;
+
+    let grava = metros * 1.0;
+    let gravadesper = 1.0 * 0.5;
+    let gravatotal = grava + gravadesper;
+
+    let agua = metros * 160;
+    let aguadesper = 160 * 0.5;
     let aguatotal = agua + aguadesper;
 
     let materiales = {
