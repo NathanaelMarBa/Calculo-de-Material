@@ -1,3 +1,5 @@
+principal();
+
 function principal(){
     let contador = 0;
     while(contador == 0){
