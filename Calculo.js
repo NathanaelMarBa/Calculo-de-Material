@@ -76,6 +76,13 @@ function concretosResistentes(){
             alert("Opcion no valida");
             concretosResistentes();
     }
+    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+    if(des == "S"){
+        conclusionobra(metros);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function concretosSimples(){
@@ -92,11 +99,25 @@ function concretosSimples(){
             alert("Opcion no valida");
             concretosSimples();
     }
+    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+    if(des == "S"){
+        conclusionobra(metros);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function concretoRelleno(){
     let metros = parseFloat(prompt("Ingrese los metros cubicos"));
     tipo5(metros);
+    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+    if(des == "S"){
+        conclusionobra(metros);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function tipo1(metros){
@@ -285,4 +306,15 @@ function presupuesto(ctotal, atotal, gtotal){
         grava: "El precio total de la grava es de $" + preciograva.toFixed(2) + ","
     }
     alert(presupuesto.cemento + "\n" + presupuesto.arena + "\n" + presupuesto.grava + "\n"+ "\n" + "Este presupuesto es un estimado con materiales de la mejor calidad, el precio puede varear segun el lugar donde se compre.");
+}
+
+function conclusionobra(metros){
+    let personal = prompt(("Ingrese el numero de trabajadores"));
+    let trabajador = 0;
+    let dias = 0;
+    for (trabajador; trabajador<metros;){
+        trabajador = (trabajador + 5) * personal;
+        dias += 1;
+    }
+        alert("La obra se demorara " + dias + " dias en completarse.");
 }
