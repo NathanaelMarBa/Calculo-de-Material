@@ -339,5 +339,3 @@ function conclusionpared(metrosc){
     }
         alert("La obra se demorara " + dias + " dias en completarse.");
 }
-
-//hola
