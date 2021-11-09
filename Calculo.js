@@ -122,6 +122,14 @@ function tipo1(metros){
     }
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+
+    let des = prompt(("Deseas un presupuesto del material? S/N"));
+    if(des == "S"){
+        presupuesto(cementototal, arenatotal, gravatotal);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function tipo2(metros){
@@ -149,6 +157,14 @@ function tipo2(metros){
     }
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+
+    let des = prompt(("Deseas un presupuesto del material? S/N"));
+    if(des == "S"){
+        presupuesto(cementototal, arenatotal, gravatotal);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function tipo3(metros){
@@ -176,6 +192,14 @@ function tipo3(metros){
     }
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+
+    let des = prompt(("Deseas un presupuesto del material? S/N"));
+    if(des == "S"){
+        presupuesto(cementototal, arenatotal, gravatotal);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function tipo4(metros){
@@ -203,6 +227,14 @@ function tipo4(metros){
     }
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+
+    let des = prompt(("Deseas un presupuesto del material? S/N"));
+    if(des == "S"){
+        presupuesto(cementototal, arenatotal, gravatotal);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
 }
 
 function tipo5(metros){
@@ -230,4 +262,25 @@ function tipo5(metros){
     }
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
+
+    let des = prompt(("Deseas un presupuesto del material? S/N"));
+    if(des == "S"){
+        presupuesto(cementototal, arenatotal, gravatotal);
+    }else{
+        alert("Gracias por su visita");
+        principal();
+    }
+}
+
+function presupuesto(ctotal, atotal, gtotal){
+    let preciocemento = ctotal * 198;
+    let precioarena = atotal * 350;
+    let preciograva = gtotal * 750;
+
+    let presupuesto = {
+        cemento: "El precio total del cemento es de $" + preciocemento.toFixed(2) + ",",
+        arena: "El precio total de la arena es de $" + precioarena.toFixed(2) + ",",
+        grava: "El precio total de la grava es de $" + preciograva.toFixed(2) + ","
+    }
+    alert(presupuesto.cemento + "\n" + presupuesto.arena + "\n" + presupuesto.grava + "\n"+ "\n" + "Este presupuesto es un estimado con materiales de la mejor calidad, el precio puede varear segun el lugar donde se compre.");
 }
