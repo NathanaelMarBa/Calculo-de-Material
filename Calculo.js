@@ -28,105 +28,193 @@ function principal(){
 }
 
 function pared(){
-    let longitud = parseFloat(prompt("Ingrese la longitud de la pared"));
-    let altura = parseFloat(prompt("Ingrese el largo de la pared"));
+    let longitud;
+    let altura;
     let metrosc = 0;
     let liga = 0.01;
-    let ancho = parseFloat(prompt("Ingrese el ancho del bloc a utilizar \n 1.10cm \n 2.15cm \n 3. 20cm \n 4. 25cm"));
+    let longitudbloc = 0.40;
+    let alturabloc = 0.20;
     let bloc1 = 10;
     let bloc2 = 15;
     let bloc3 = 20;
     let bloc4 = 25;
+    let conta = false;
+    let conta2 = false;
+    let ancho = 0;
 
-    if(ancho == 1){
-        ancho = bloc1;
-    } else if(ancho == 2){
-        ancho = bloc2;
-    } else if(ancho == 3){
-        ancho = bloc3;
-    } else if(ancho == 4){
-        ancho = bloc4;
+    while(conta == false){
+        longitud = parseFloat(prompt("Ingrese la longitud de la pared"));
+        altura = parseFloat(prompt("Ingrese el largo de la pared"));
+        if(longitud == 0 && altura == 0){
+            alert("Ingresa medidas mayores a 0 metros por favor")
+        }
+
+        if(longitud > 0 && altura > 0){
+                conta = true;
+        }
     }
 
-    let longitudbloc = 0.40;
-    let alturabloc = 0.20;
+        while(conta2 == false){
+            let opc = parseInt(prompt("Ingrese el ancho del bloc a utilizar \n 1.10cm \n 2.15cm \n 3. 20cm \n 4. 25cm"));
+                    
+                switch(opc){
+                    case 1:
+                        ancho = bloc1;
+                        conta2 = true;
+                        break;
+                    case 2:
+                        ancho = bloc2;
+                        conta2 = true;
+                        break;
+                    case 3:
+                        ancho = bloc3;
+                        conta2 = true;
+                        break;
+                    case 4:
+                        ancho = bloc4;
+                        conta2 = true;
+                        break;
+                    default:
+                        alert("Opcion no valida");
+                }
+        }
 
-    bloquesancho = (longitud) / (longitudbloc + liga);
-    bloquesalto = (altura) / (alturabloc + liga);
-    let total = bloquesancho * bloquesalto;
-    let desperdicio = total * 0.5;
-    total = total + desperdicio;
+            bloquesancho = (longitud) / (longitudbloc + liga);
+            bloquesalto = (altura) / (alturabloc + liga);
+            let total = bloquesancho * bloquesalto;
+            let desperdicio = total * 0.5;
+            total = total + desperdicio;
 
-    let mortero = (longitudbloc + alturabloc)*(ancho)*(liga);
-    let totalmortero = Math.round(total) * mortero;
-    alert("El numero de blocs a utilizar es: " + Math.round(total));
-    alert("El total de mortero a utilizar es: " + totalmortero.toFixed(4) + " m3");
-    metrosc = longitud * altura;
+            let mortero = (longitudbloc + alturabloc)*(ancho)*(liga);
+            let totalmortero = Math.round(total) * mortero;
+            alert("El numero de blocs a utilizar es: " + Math.round(total));
+            alert("El total de mortero a utilizar es: " + totalmortero.toFixed(4) + " m3");
+            metrosc = longitud * altura;
 
-    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la pared? S/N")
-    if(des == "S"){
-        conclusionpared(metrosc);
-    }else{
-        alert("Gracias por su visita");
-        principal();
+    let cont = false;
+
+    while(cont == false){
+        let des = prompt("Te gustaria saber en cuanto tiempo se terminara la pared? S/N")
+        if(des == "S"){
+            conclusionpared(metrosc);
+            cont = true;
+        }else if (des == "N"){
+            alert("Gracias por su visita");
+            principal();
+            cont = true;
+        }
     }
 }
 
 function concretosResistentes(){
-    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
-    let opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:2 \n 2. 1:2:3"));
-    switch(opc){
-        case 1:
-            tipo1(metros);
-            break;
-        case 2:
-            tipo2(metros);
-            break;
-        default:
-            alert("Opcion no valida");
-            concretosResistentes();
+    let metros;
+    let opc;
+    let conta = false;
+
+    while(conta == false){
+        metros = parseFloat(prompt("Ingrese los metros cubicos"));
+
+        if(metros > 0){
+            opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:2 \n 2. 1:2:3"));
+            switch(opc){
+                case 1:
+                    tipo1(metros);
+                    conta = true;
+                    break;
+                case 2:
+                    tipo2(metros);
+                    conta = true;
+                    break;
+                default:
+                    alert("Opcion no valida");
+                    conta = true;
+                    concretosResistentes();
+            }
+        }
     }
-    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
-    if(des == "S"){
-        conclusionobra(metros);
-    }else{
-        alert("Gracias por su visita");
-        principal();
+
+    let cont = false;
+
+    while(cont == false){
+        let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+        if(des == "S"){
+            conclusionobra(metros);
+            cont = true;
+        }else if (des == "N"){
+            alert("Gracias por su visita");
+            principal();
+            cont = true;
+        }
     }
 }
 
 function concretosSimples(){
-    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
-    let opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:4 \n 2. 1:3:4"));
-    switch(opc){
-        case 1:
-            tipo3(metros);
-            break;
-        case 2:
-            tipo4(metros);
-            break;
-        default:
-            alert("Opcion no valida");
-            concretosSimples();
+    let metros;
+    let opc;
+    let conta = false;
+
+    while(conta == false){
+        metros = parseFloat(prompt("Ingrese los metros cubicos"));
+        
+        if(metros > 0){
+            opc = parseInt(prompt("Ingrese el tipo de concreto \n 1. 1:2:4 \n 2. 1:3:4"));
+            switch(opc){
+                case 1:
+                    tipo3(metros);
+                    conta = true;
+                    break;
+                case 2:
+                    tipo4(metros);
+                    conta = true;
+                    break;
+                default:
+                    alert("Opcion no valida");
+                    conta = true;
+                    concretosSimples();
+            }
+        }
     }
-    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
-    if(des == "S"){
-        conclusionobra(metros);
-    }else{
-        alert("Gracias por su visita");
-        principal();
+
+    let cont = false;
+
+    while(cont == false){
+        let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+        if(des == "S"){
+            conclusionobra(metros);
+            cont = true;
+        }else if(des == "N"){
+            alert("Gracias por su visita");
+            principal();
+            cont = true;
+        }
     }
 }
 
 function concretoRelleno(){
-    let metros = parseFloat(prompt("Ingrese los metros cubicos"));
-    tipo5(metros);
-    let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
-    if(des == "S"){
-        conclusionobra(metros);
-    }else{
-        alert("Gracias por su visita");
-        principal();
+    let metros;
+    let conta = false;
+
+    while(conta == false){
+        metros = parseFloat(prompt("Ingrese los metros cubicos"));
+        
+        if(metros > 0){
+            tipo5(metros);
+            conta = true;
+        }
+    }
+
+    let cont = false;
+
+    while(cont == false){
+        let des = prompt("Te gustaria saber en cuanto tiempo se terminara la obra? S/N")
+        if(des == "S"){
+            conclusionobra(metros);
+            cont = true;
+        }else if(des == "N"){
+            alert("Gracias por su visita");
+            principal();
+            cont = true;
+        }
     }
 }
 
@@ -156,12 +244,18 @@ function tipo1(metros){
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 
-    let des = prompt(("Deseas un presupuesto del material? S/N"));
-    if(des == "S"){
-        presupuesto(cementototal, arenatotal, gravatotal);
-    }else{
-        alert("Gracias por su visita");
-        principal();
+    let cont = false;
+
+        while(cont == false){
+            let des = prompt(("Deseas un presupuesto del material? S/N"));
+            if(des == "S"){
+            cont = true;
+                presupuesto(cementototal, arenatotal, gravatotal);
+            }else if(des == "N"){
+                alert("Gracias por su visita");
+                principal();
+                cont = true;
+            }
     }
 }
 
@@ -191,13 +285,19 @@ function tipo2(metros){
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 
-    let des = prompt(("Deseas un presupuesto del material? S/N"));
-    if(des == "S"){
-        presupuesto(cementototal, arenatotal, gravatotal);
-    }else{
-        alert("Gracias por su visita");
-        principal();
-    }
+    let cont = false;
+
+        while(cont == false){
+            let des = prompt(("Deseas un presupuesto del material? S/N"));
+            if(des == "S"){
+            cont = true;
+                presupuesto(cementototal, arenatotal, gravatotal);
+            }else if(des == "N"){
+                alert("Gracias por su visita");
+                principal();
+                cont = true;
+            }
+        }
 }
 
 function tipo3(metros){
@@ -226,13 +326,19 @@ function tipo3(metros){
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 
-    let des = prompt(("Deseas un presupuesto del material? S/N"));
-    if(des == "S"){
-        presupuesto(cementototal, arenatotal, gravatotal);
-    }else{
-        alert("Gracias por su visita");
-        principal();
-    }
+    let cont = false;
+
+        while(cont == false){   
+            let des = prompt(("Deseas un presupuesto del material? S/N"));
+            if(des == "S"){
+                presupuesto(cementototal, arenatotal, gravatotal);
+                cont = true;
+            }else if(des == "N"){
+                alert("Gracias por su visita");
+                principal();
+                cont = true;
+            }
+        }
 }
 
 function tipo4(metros){
@@ -261,13 +367,19 @@ function tipo4(metros){
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 
-    let des = prompt(("Deseas un presupuesto del material? S/N"));
-    if(des == "S"){
-        presupuesto(cementototal, arenatotal, gravatotal);
-    }else{
-        alert("Gracias por su visita");
-        principal();
-    }
+    let cont = false;
+
+        while(cont == false){
+            let des = prompt(("Deseas un presupuesto del material? S/N"));
+            if(des == "S"){
+                presupuesto(cementototal, arenatotal, gravatotal);
+                cont = true;
+            }else if(des == "N"){
+                alert("Gracias por su visita");
+                principal();
+                cont = true;
+            }
+        }
 }
 
 function tipo5(metros){
@@ -296,13 +408,19 @@ function tipo5(metros){
 
     alert(materiales.cemento + "\n" + materiales.arena + "\n" + materiales.grava + "\n" + materiales.agua);
 
-    let des = prompt(("Deseas un presupuesto del material? S/N"));
-    if(des == "S"){
-        presupuesto(cementototal, arenatotal, gravatotal);
-    }else{
-        alert("Gracias por su visita");
-        principal();
-    }
+    let cont = false;
+
+        while(cont == false){
+            let des = prompt(("Deseas un presupuesto del material? S/N"));
+            if(des == "S"){
+                presupuesto(cementototal, arenatotal, gravatotal);
+                cont = true;
+            }else if(des == "N"){
+                alert("Gracias por su visita");
+                principal();
+                cont = true;
+            }
+        }
 }
 
 function presupuesto(ctotal, atotal, gtotal){
@@ -319,23 +437,40 @@ function presupuesto(ctotal, atotal, gtotal){
 }
 
 function conclusionobra(metros){
-    let personal = prompt(("Ingrese el numero de trabajadores"));
+    let cont = false;
+    let personal;
     let trabajador = 0;
     let dias = 0;
-    for (trabajador; trabajador<metros;){
-        trabajador = (trabajador + 5) * personal;
-        dias += 1;
+
+    while(cont == false){
+        personal = prompt(("Ingrese el numero de trabajadores"));
+
+        if(personal > 0){
+            for (trabajador; trabajador<metros;){
+                trabajador = (trabajador + 5) * personal;
+                dias += 1;
+            }
+                alert("La obra se demorara " + dias + " dias en completarse.");
+                cont = true;
+        }
     }
-        alert("La obra se demorara " + dias + " dias en completarse.");
 }
 
 function conclusionpared(metrosc){
-    let personal = prompt(("Ingrese el numero de trabajadores"));
+    let personal = 0;
     let trabajador = 0;
     let dias = 0;
-    for (trabajador; trabajador<metrosc;){
-        trabajador = (trabajador + 8) * personal;
-        dias += 1;
+    let cont = false;
+    while(cont == false){
+        personal = prompt(("Ingrese el numero de trabajadores"));
+
+        if(personal > 0){
+            for (trabajador; trabajador<metrosc;){
+                trabajador = (trabajador += 8) * personal;
+                dias += 1;
+            }
+            cont = true;
+        }
     }
-        alert("La obra se demorara " + dias + " dias en completarse.");
+    alert("La obra se demorara " + dias + " dias en completarse.");
 }
